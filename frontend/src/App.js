@@ -7,6 +7,8 @@ import Footer from './Pages/Home/Components/Footer';
 import Admin from './Pages/Dashboard/Admin/Admin';
 import User from './Pages/Dashboard/user/user';
 import NewEntry from './Pages/Dashboard/Admin/NewEntry';
+import ViewEntry from './Pages/Dashboard/Admin/ViewEntry';
+import SearchEntry from './Pages/Dashboard/Admin/SearchEntry';
 
 
 
@@ -19,6 +21,8 @@ function App() {
           <Routes>
             <Route path="/dashboard/admin" element={<Admin></Admin>}></Route>
             <Route path="/dashboard/admin/newentry" element={<NewEntry></NewEntry>}></Route>
+            <Route path="/dashboard/admin/viewentry" element={<ViewEntry></ViewEntry>}></Route>
+            <Route path="/dashboard/admin/searchentry" element={<SearchEntry></SearchEntry>}></Route>
             <Route path="/dashboard/user" element={<User></User>}></Route>
           </Routes>
 

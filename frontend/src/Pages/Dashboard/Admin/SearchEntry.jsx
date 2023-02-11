@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
-function VerticalNavbarAdmin() {
+function SearchEntry() {
   return (
+    <div>
+
     <div className="grid grid-cols-4 h-screen">
       <aside className="col-span-1 bg-gray-800">
         <nav className="flex flex-col h-full text-gray-600 body-font">
@@ -19,14 +20,15 @@ function VerticalNavbarAdmin() {
         </nav>
       </aside>
       <main className="col-span-3 bg-gray-300">
-        {/* Add your main content here */}
-
+        
             
 
       </main>
     </div>
 
+    </div>
+
   )
 }
 
-export default VerticalNavbarAdmin
+export default SearchEntry
