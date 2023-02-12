@@ -1,4 +1,4 @@
-## Our Blockchain-based Healthcare App
+# Our Blockchain-based Healthcare App
 
 Our blockchain-based healthcare app solves several key problems in the healthcare industry. 
 
