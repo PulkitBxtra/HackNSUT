@@ -17,7 +17,7 @@ function ViewEntry() {
                   .then((result) => {
                     console.log("Wallet Connected");
 
-                    
+
                   })
                   .catch((error) => {
                     console.log(error);
@@ -281,6 +281,9 @@ function ViewEntry() {
           </Link>
           <Link to="/dashboard/admin/searchentry" className="p-4 text-white hover:bg-gray-700">
             Search Entry
+          </Link>
+          <Link to="/dashboard/admin/requestaccess" className="p-4 text-white hover:bg-gray-700">
+            Request Access
           </Link>
         </nav>
       </aside>

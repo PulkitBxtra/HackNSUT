@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {  useEffect } from "react";
 import { ethers } from "ethers";
 import { useState } from 'react';
+import { id } from 'ethers/lib/utils';
 
 
 function NewEntry() {
@@ -63,17 +64,7 @@ function NewEntry() {
             },
             {
               "internalType": "string",
-              "name": "id",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "addhar",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "time",
+              "name": "data",
               "type": "string"
             }
           ],
@@ -200,17 +191,7 @@ function NewEntry() {
           "outputs": [
             {
               "internalType": "string",
-              "name": "id",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "aadhar",
-              "type": "string"
-            },
-            {
-              "internalType": "string",
-              "name": "timestamp",
+              "name": "data",
               "type": "string"
             }
           ],
@@ -299,9 +280,9 @@ function NewEntry() {
         {
           "inputs": [
             {
-              "internalType": "address",
-              "name": "userAddress",
-              "type": "address"
+              "internalType": "string",
+              "name": "addhar",
+              "type": "string"
             }
           ],
           "name": "getRecordsAdmin",
@@ -310,17 +291,7 @@ function NewEntry() {
               "components": [
                 {
                   "internalType": "string",
-                  "name": "id",
-                  "type": "string"
-                },
-                {
-                  "internalType": "string",
-                  "name": "aadhar",
-                  "type": "string"
-                },
-                {
-                  "internalType": "string",
-                  "name": "timestamp",
+                  "name": "data",
                   "type": "string"
                 }
               ],
@@ -340,17 +311,7 @@ function NewEntry() {
               "components": [
                 {
                   "internalType": "string",
-                  "name": "id",
-                  "type": "string"
-                },
-                {
-                  "internalType": "string",
-                  "name": "aadhar",
-                  "type": "string"
-                },
-                {
-                  "internalType": "string",
-                  "name": "timestamp",
+                  "name": "data",
                   "type": "string"
                 }
               ],
@@ -375,18 +336,30 @@ function NewEntry() {
           "stateMutability": "view",
           "type": "function"
         }
-      ]
-    var address = "0x19013F88d263FD26C6a287c16bCa0E30C9aE3A51";
+      ];
+    var address = "0xf8C8c0f5ae382F23b439eB4B1f1a429593cc78D7";
     const { ethereum } = window;
+    let obj = {
+      Aadhar,
+      Id,
+      BloodPressure,
+      HeartRate
+    }
+    var str = JSON.stringify(obj);
+    console.log(str);
     // console.log(window.ethereum);
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(address, abi, signer);
-    let d;
-    // await contract.pushRecord("0x24ED65507c66f953601956619Df5edA46d3e9A5f", "he", "h", "sjh").then(function (data){
-    //   d = data;
-    //   console.log(d);
+    console.log(contract);
+    // await contract.pushRecord("0x24ED65507c66f953601956619Df5edA46d3e9A5f", str).then(function (data){
+    //   // d = data;
+    //   console.log(data);
     // });
+    await contract.getRecordsAdmin("123").then(function (data){
+      // d = data;
+      console.log(data);
+    });
     // await contract.("0x24ED65507c66f953601956619Df5edA46d3e9A5f", "he", "h", "sjh").then(function (data){
     //   d = data;
     //   console.log(d);
@@ -433,6 +406,9 @@ function NewEntry() {
           <Link to="/dashboard/admin/newentry" className="p-4 text-white hover:bg-gray-700">
             Search Entry
           </Link>
+          <Link to="/dashboard/admin/requestaccess" className="p-4 text-white hover:bg-gray-700">
+            Request Access
+          </Link>
         </nav>
       </aside>
       <main className="col-span-3 bg-gray-300">
@@ -447,36 +423,67 @@ function NewEntry() {
 
         
     <form action="" onSubmit={handleSubmit}>
-        <div class="p-2">
+
+        <div class="p-1/3">
           <div class="relative">
-            <label for="Aadhar" class="leading-7 text-sm text-gray-600">Aadhar Number</label>
+            
+          </div>
+        </div>
+
+        <div class="p-1/3">
+          <div class="relative">
+            
+          </div>
+        </div>
+
+        <div class=" mx-auto">
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-1/2">
+          <div class="relative">
+          <label for="Aadhar" class="leading-7 text-sm text-gray-600">Aadhar Number</label>
             <input type="text" id="aadhar" name="aadhar" value={Aadhar} onChange={(e)=>{setAadhar(e.target.value);}} placeholder=""class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
           </div>
         </div>
-
-        <div class="p-2">
+        <div class="p-2 w-1/2">
           <div class="relative">
-            <label for="HeartRate" class="leading-7 text-sm text-gray-600">Heart Rate</label>
+          <label for="HeartRate" class="leading-7 text-sm text-gray-600">Heart Rate</label>
             <input type="text" id="HeartRate" name="HeartRate" value={HeartRate} onChange={(e)=>{setHeartRate(e.target.value);}} class="w-full  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
           </div>
         </div>
+      </div>
+      </div>
 
 
-        <div class="p-2">
+        {/* <div class="p-1/3">
           <div class="relative">
-            <label for="BloodPressure" class="leading-7 text-sm text-gray-600">Blood Pres</label>
+            
+          </div>
+        </div>
+
+        <div class="p-1/3">
+          <div class="relative">
+            
+          </div>
+        </div> */}
+
+
+      <div class=" mx-auto">
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-1/2">
+          <div class="relative">
+          <label for="BloodPressure" class="leading-7 text-sm text-gray-600">Blood Pres</label>
             <input type="BloodPressure" id="Blodd" name="insurance"  value={BloodPressure} onChange={(e)=>{setBloodPressure(e.target.value);}}class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
           </div>
         </div>
-
-        <div class="p-2">
+        <div class="p-2 w-1/2">
           <div class="relative">
-            <label for="Insurance" class="leading-7 text-sm text-gray-600">Insurance Id</label>
+          <label for="Insurance" class="leading-7 text-sm text-gray-600">Insurance Id</label>
             <input type="Insurance" id="insurance" name="insurance" value={Id} onChange={(e)=>{setId(e.target.value);}} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
           </div>
         </div>
-
-
+      </div>
+      </div>
+        
 
         
         <div class="p-2 w-full">

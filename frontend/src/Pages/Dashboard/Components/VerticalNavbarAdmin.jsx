@@ -16,6 +16,10 @@ function VerticalNavbarAdmin() {
           <Link to="/dashboard/admin/searchentry" className="p-4 text-white hover:bg-gray-700">
             Search Entry
           </Link>
+          <Link to="/dashboard/admin/requestaccess" className="p-4 text-white hover:bg-gray-700">
+            Request Access
+          </Link>
+          
         </nav>
       </aside>
       <main className="col-span-3 bg-gray-300">

@@ -15,7 +15,7 @@ function Navbar() {
     .then((result) => {
       setAccount(result[0]);
       Navigate('/dashboard/admin');
-      setLog(!Login);
+      
       console.log(Login);
       console.log("Wallet Connected");
     })
