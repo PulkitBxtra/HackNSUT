@@ -1,6 +1,33 @@
 import React from 'react'
+import { useState } from 'react';
+import {Navigate, useNavigate} from 'react-router-dom';
 
 function Navbar() {
+  const [account,setAccount] = useState(null);
+  const [Login, setLog] = useState(false);
+
+ 
+
+
+  const handleClick = () =>{
+    window.ethereum
+    .request({ method: "eth_requestAccounts" })
+    .then((result) => {
+      setAccount(result[0]);
+      Navigate('/dashboard/admin');
+      setLog(!Login);
+      console.log(Login);
+      console.log("Wallet Connected");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  // if(account!=null){
+  //   navigate('/dashboard/admin');
+  // }
+
   return (
     <div>
         <header class="text-gray-600 body-font">
@@ -20,7 +47,8 @@ function Navbar() {
       <a class="mr-5 hover:text-gray-900 cursor-pointer">Third Link</a>
       <a class="mr-5 hover:text-gray-900 cursor-pointer">Experiences</a>
     </nav>
-    <button class=" text-gray-700 inline-flex items-center bg-green-400 border-0 py-1 px-3 focus:outline-none hover:bg-green-200 rounded text-base mt-4 md:mt-0">Login
+
+    <button onClick={handleClick} class=" text-gray-700 inline-flex items-center bg-green-400 border-0 py-1 px-3 focus:outline-none hover:bg-green-200 rounded text-base mt-4 md:mt-0">Login
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
       </svg>

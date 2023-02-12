@@ -221,7 +221,7 @@ function ViewEntry() {
                     "type": "function"
                 }
             ];
-            var address = "0xfe39E9C62ba2de4730dB65aB67b10DcE40f96cF1";
+            var address = "0xAe4F1430761A1543b7015d4801534C4C489A96B8";
             const { ethereum } = window;
             // console.log(window.ethereum);
             const provider = new ethers.providers.Web3Provider(ethereum);

@@ -463,7 +463,7 @@ function NewEntry() {
           <Link to="/dashboard/admin/searchentry" className="p-4 text-white hover:bg-gray-700">
             View Entries
           </Link>
-          <Link to="/contact" className="p-4 text-white hover:bg-gray-700">
+          <Link to="/dashboard/admin/newentry" className="p-4 text-white hover:bg-gray-700">
             Search Entry
           </Link>
         </nav>

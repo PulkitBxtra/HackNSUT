@@ -11,7 +11,7 @@ function Card(props) {
     
   <div class="container px-5 py-5 mx-auto  ">
     <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
-      <h1 class="flex-grow sm:pr-16 text-l font-medium title-font text-gray-900">id: {props.id}
+      <h1 class="w-2/3 flex-grow sm:pr-16 text-l font-medium title-font text-gray-900">id: {props.id}
       <br />
         Date: {props.time}
         <br />
@@ -22,7 +22,7 @@ function Card(props) {
     {/* <hr class="divide-emerald-500"/> */}
   </div>
 
-    <div class={open ? "hidden": "flex mx-20 bg-gray-100 rounded"}>
+    <div class={open ? "hidden": "flex w-2/3 items-center mx-auto bg-gray-100 rounded"}>
     {/* <div onClick={() => setOpen(!open)} class="display-hidden"> */}
         <p>
 	"random": "52",
