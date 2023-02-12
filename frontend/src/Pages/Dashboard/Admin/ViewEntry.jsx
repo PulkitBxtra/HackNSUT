@@ -16,6 +16,8 @@ function ViewEntry() {
                   .request({ method: "eth_requestAccounts" })
                   .then((result) => {
                     console.log("Wallet Connected");
+
+                    
                   })
                   .catch((error) => {
                     console.log(error);
