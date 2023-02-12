@@ -12,11 +12,18 @@ function NewEntry() {
     const [Aadhar,setAadhar] = useState("");
     const [HeartRate,setHeartRate] = useState("");
     const [BloodPressure,setBloodPressure] = useState("");
-    const [Id,setId] = useState("");
+    const [InsId,setInsId] = useState("");
+    const [WalletId,setWalletId] = useState("");
+    const [Details,setDetails] = useState("");
+    const [Prescription,setPrescription] = useState("");
+    const [Note,setNote] = useState("");
+    const [Refferal,setRefferal] = useState("");
+    const [DocId,setDocId] = useState("");
+
     
     const handleSubmit = async (e) =>{ 
       e.preventDefault();
-      console.log(Aadhar,HeartRate,BloodPressure,Id);
+      console.log(Aadhar,HeartRate,BloodPressure,WalletId,InsId,Details,Prescription,Note,Refferal,DocId);
 
       var abi = [
         {
@@ -341,12 +348,21 @@ function NewEntry() {
     const { ethereum } = window;
     let obj = {
       Aadhar,
-      Id,
+      InsId,
       BloodPressure,
-      HeartRate
+      HeartRate,
+      WalletId,
+      Details,
+      Prescription,
+      Note,
+      Refferal,
+      DocId
     }
     var str = JSON.stringify(obj);
     console.log(str);
+    var public_key=obj.WalletId;
+    console.log(public_key);
+
     // console.log(window.ethereum);
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = await provider.getSigner();
@@ -356,7 +372,7 @@ function NewEntry() {
     //   // d = data;
     //   console.log(data);
     // });
-    await contract.getRecordsAdmin("123").then(function (data){
+    await contract.pushRecord(public_key,str).then(function (data){
       // d = data;
       console.log(data);
     });
@@ -379,7 +395,8 @@ function NewEntry() {
                 window.ethereum
                   .request({ method: "eth_requestAccounts" })
                   .then((result) => {
-                    alert("Wallet Connected");
+                    // alert("Wallet Connected");
+                    console.log("wallet connected");
                   })
                   .catch((error) => {
                     console.log(error);
@@ -394,7 +411,7 @@ function NewEntry() {
   return (
     <div>
 
-         <div className="grid grid-cols-4 h-screen">
+         <div className="grid grid-cols-4 min-h-screen">
       <aside className="col-span-1 bg-gray-800">
         <nav className="flex flex-col h-full text-gray-600 body-font">
           <Link to="/dashboard/admin/newentry" className="p-4 text-white hover:bg-gray-700">
@@ -411,7 +428,7 @@ function NewEntry() {
           </Link>
         </nav>
       </aside>
-      <main className="col-span-3 bg-gray-300">
+      <main className="col-span-3 bg-gray-300 min-h-max">
         
         <section class="text-gray-600 body-font relative">
   <div class="container px-5 py-24 mx-auto">
@@ -424,17 +441,7 @@ function NewEntry() {
         
     <form action="" onSubmit={handleSubmit}>
 
-        <div class="p-1/3">
-          <div class="relative">
-            
-          </div>
-        </div>
-
-        <div class="p-1/3">
-          <div class="relative">
-            
-          </div>
-        </div>
+        
 
         <div class=" mx-auto">
       <div class="flex flex-wrap -m-2">
@@ -446,25 +453,12 @@ function NewEntry() {
         </div>
         <div class="p-2 w-1/2">
           <div class="relative">
-          <label for="HeartRate" class="leading-7 text-sm text-gray-600">Heart Rate</label>
-            <input type="text" id="HeartRate" name="HeartRate" value={HeartRate} onChange={(e)=>{setHeartRate(e.target.value);}} class="w-full  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <label for="Wallet" class="leading-7 text-sm text-gray-600">Wallet address</label>
+            <input type="text" id="Wallet" name="Wallet" value={WalletId} onChange={(e)=>{setWalletId(e.target.value);}} class="w-full  bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
           </div>
         </div>
       </div>
       </div>
-
-
-        {/* <div class="p-1/3">
-          <div class="relative">
-            
-          </div>
-        </div>
-
-        <div class="p-1/3">
-          <div class="relative">
-            
-          </div>
-        </div> */}
 
 
       <div class=" mx-auto">
@@ -477,17 +471,70 @@ function NewEntry() {
         </div>
         <div class="p-2 w-1/2">
           <div class="relative">
-          <label for="Insurance" class="leading-7 text-sm text-gray-600">Insurance Id</label>
-            <input type="Insurance" id="insurance" name="insurance" value={Id} onChange={(e)=>{setId(e.target.value);}} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          <label for="Insurance" class="leading-7 text-sm text-gray-600">Heart Rate</label>
+            <input type="text" id="HeartRate" name="HeartRate" value={HeartRate} onChange={(e)=>{setHeartRate(e.target.value);}} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
           </div>
         </div>
       </div>
       </div>
+
+
+      <div class="p-2 w-full">
+          <div class="relative">
+            <label for="message" class="leading-7 text-sm text-gray-600">Details</label>
+            <textarea id="Details" name="Details" value={Details} onChange={(e)=>{setDetails(e.target.value);}} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+          </div>
+        </div>
+
+        <div class="p-2 w-full">
+          <div class="relative">
+            <label for="Pressciption" class="leading-7 text-sm text-gray-600">Presciption</label>
+            <textarea id="Prescription" name="Presciption" value={Prescription} onChange={(e)=>{setPrescription(e.target.value);}} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+          </div>
+        </div>
+
+
+      <div class=" mx-auto">
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-1/2">
+          <div class="relative">
+          <label for="Note" class="leading-7 text-sm text-gray-600">Note</label>
+            <input type="Note" id="Note" name="Note"  value={Note} onChange={(e)=>{setNote(e.target.value);}}class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          </div>
+        </div>
+        <div class="p-2 w-1/2">
+          <div class="relative">
+          <label for="Refferal" class="leading-7 text-sm text-gray-600">Refferal</label>
+            <input type="text" id="Refferal" name="Refferal" value={Refferal} onChange={(e)=>{setRefferal(e.target.value);}} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <div class=" mx-auto">
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-1/2">
+          <div class="relative">
+          <label for="Insurance" class="leading-7 text-sm text-gray-600">Insurance Id</label>
+            <input type="text" id="Insurance" name="Insurance"  value={InsId} onChange={(e)=>{setInsId(e.target.value);}}class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          </div>
+        </div>
+        <div class="p-2 w-1/2">
+          <div class="relative">
+          <label for="Doctor" class="leading-7 text-sm text-gray-600">Doctor Id</label>
+            <input type="text" id="Doctor" name="Doctor" value={DocId} onChange={(e)=>{setDocId(e.target.value);}} class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      
         
 
         
         <div class="p-2 w-full">
-          <button class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Button</button>
+          <button class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Submit</button>
         </div>
 
         </form>

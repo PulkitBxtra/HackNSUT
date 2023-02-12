@@ -10,6 +10,7 @@ import NewEntry from './Pages/Dashboard/Admin/NewEntry';
 import ViewEntry from './Pages/Dashboard/Admin/ViewEntry';
 import SearchEntry from './Pages/Dashboard/Admin/SearchEntry';
 import RequestAccess from './Pages/Dashboard/Admin/RequestAccess';
+import UserLogs from './Pages/Dashboard/user/UserLogs';
 
 
 
@@ -26,6 +27,10 @@ function App() {
             <Route path="/dashboard/admin/searchentry" element={<SearchEntry></SearchEntry>}></Route>
             <Route path="/dashboard/admin/requestaccess" element={<RequestAccess></RequestAccess>}></Route>
             <Route path="/dashboard/user" element={<User></User>}></Route>
+            <Route path="/dashboard/user/logs" element={<UserLogs></UserLogs>}></Route>
+            <Route path="/dashboard/user/pending" element={<User></User>}></Route>
+            <Route path="/dashboard/user/authorised" element={<User></User>}></Route>
+            {/* <Route path="/dashboard/user" element={<User></User>}></Route> */}
           </Routes>
 
 

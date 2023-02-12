@@ -1,8 +1,11 @@
 import React from 'react'
+import VerticalNavbarUser from '../Components/VerticalNavbarUser'
 
 function user() {
   return (
-    <div>dash/user</div>
+    <div>
+      <VerticalNavbarUser></VerticalNavbarUser>
+    </div>
   )
 }
 
