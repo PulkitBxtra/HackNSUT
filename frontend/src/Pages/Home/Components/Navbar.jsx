@@ -7,7 +7,7 @@ function Navbar() {
   const [Login, setLog] = useState(false);
 
  
-
+  // chn
 
   const handleClick = () =>{
     window.ethereum
