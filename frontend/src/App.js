@@ -11,6 +11,7 @@ import ViewEntry from './Pages/Dashboard/Admin/ViewEntry';
 import SearchEntry from './Pages/Dashboard/Admin/SearchEntry';
 import RequestAccess from './Pages/Dashboard/Admin/RequestAccess';
 import UserLogs from './Pages/Dashboard/user/UserLogs';
+import Experiences from './Pages/Experiences/Experiences';
 
 
 
@@ -40,7 +41,7 @@ function App() {
           {/* <Route path="/events" element={<Events></Events>}></Route>
           <Route path="/gallery" element={<Gallery></Gallery>}></Route>
           <Route path="/contact" element={<Contact></Contact>}></Route> */}
-          {/* <Route path="/dash" element={<Dash></Dash>}></Route> */}
+          <Route path="/Experiences" element={<Experiences></Experiences>}></Route>
         </Routes>
         <Footer></Footer>
       </BrowserRouter>

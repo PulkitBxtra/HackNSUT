@@ -17,9 +17,6 @@ function VerticalNavbarUser() {
           <Link to="/dashboard/user/authorised" className="p-4 text-white hover:bg-gray-700">
             Authorised Requests
           </Link>
-          {/* <Link to="/dashboard/admin/requestaccess" className="p-4 text-white hover:bg-gray-700">
-            Request Access
-          </Link> */}
           
         </nav>
       </aside>
