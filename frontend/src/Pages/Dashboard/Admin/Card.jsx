@@ -42,38 +42,12 @@ function Card(props) {
     {/* <div onClick={() => setOpen(!open)} class="display-hidden"> */}
         <p>
           {JSON.stringify(randomData)}
-	{/* "random": "52",
-	"random float": "41.74",
-	"bool": "false",
-	"date": "1991-08-27",
-	"regEx": "hellooooooooooooooooooo world",
-	"enum": "json",
-	"firstname": "Trixi",
-	"lastname": "Ariella",
-	"city": "Austin",
-	"country": "Liberia",
-	"countryCode": "LK",
-	"email uses current data": "Trixi.Ariella@gmail.com",
-	"email from expression": "Trixi.Ariella@yopmail.com",
-	"array": [
-		"Peri",
-		"Hope",
-		"Doralynne",
-		"Neila",
-		"Corly" */}
-	],
     </p>
     </div>
 
     <hr class="h-px my-8 bg-emerald-500 border-0 dark:bg-emerald-500"></hr>
 
 </section>
-        {/* {props.id}
-        
-        {props.aadhar}
-        
-        {props.time} */}
-
     </div>
   )
 }
