@@ -17,211 +17,349 @@ function NewEntry() {
       e.preventDefault();
       console.log(Aadhar,HeartRate,BloodPressure,Id);
 
-      var abi =[
+      var abi = [
         {
-            "inputs": [
-                {
-                    "internalType": "string",
-                    "name": "id",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "_addhar",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "time",
-                    "type": "string"
-                }
-            ],
-            "name": "pushRecord",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "addhar",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "phoneNumber",
+              "type": "string"
+            }
+          ],
+          "name": "createAccount",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
         },
         {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "doctorAddress",
-                    "type": "address"
-                }
-            ],
-            "name": "removeAccess",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "adminAddress",
+              "type": "address"
+            }
+          ],
+          "name": "giveAccess",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
         },
         {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "name": "addressToAdmin",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "name",
-                    "type": "string"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            },
+            {
+              "internalType": "string",
+              "name": "id",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "addhar",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "time",
+              "type": "string"
+            }
+          ],
+          "name": "pushRecord",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
         },
         {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "name": "addressToPatient",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "aadhar",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "internalType": "address",
-                    "name": "publicAddress",
-                    "type": "address"
-                },
-                {
-                    "internalType": "string",
-                    "name": "phoneNumber",
-                    "type": "string"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            }
+          ],
+          "name": "requestAccess",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
         },
         {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "name": "addressToRecord",
-            "outputs": [
-                {
-                    "internalType": "string",
-                    "name": "id",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "aadhar",
-                    "type": "string"
-                },
-                {
-                    "internalType": "string",
-                    "name": "timestamp",
-                    "type": "string"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
         },
         {
-            "inputs": [
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "addressToAdmin",
+          "outputs": [
+            {
+              "components": [
                 {
-                    "internalType": "address",
-                    "name": "userAddress",
-                    "type": "address"
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
                 }
-            ],
-            "name": "getDetailsAdmin",
-            "outputs": [
-                {
-                    "components": [
-                        {
-                            "internalType": "string",
-                            "name": "id",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "aadhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "timestamp",
-                            "type": "string"
-                        }
-                    ],
-                    "internalType": "struct Storage.Record[]",
-                    "name": "",
-                    "type": "tuple[]"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
+              ],
+              "internalType": "struct Storage.AdminInfo",
+              "name": "info",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
         },
         {
-            "inputs": [
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "addressToPatient",
+          "outputs": [
+            {
+              "components": [
                 {
-                    "internalType": "address",
-                    "name": "userAddress",
-                    "type": "address"
-                }
-            ],
-            "name": "getDetailsUser",
-            "outputs": [
+                  "internalType": "string",
+                  "name": "aadhar",
+                  "type": "string"
+                },
                 {
-                    "components": [
-                        {
-                            "internalType": "string",
-                            "name": "id",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "aadhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "timestamp",
-                            "type": "string"
-                        }
-                    ],
-                    "internalType": "struct Storage.Record[]",
-                    "name": "",
-                    "type": "tuple[]"
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "publicAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "phoneNumber",
+                  "type": "string"
                 }
-            ],
-            "stateMutability": "view",
-            "type": "function"
+              ],
+              "internalType": "struct Storage.PatientInfo",
+              "name": "info",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "addressToRecord",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "id",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "aadhar",
+              "type": "string"
+            },
+            {
+              "internalType": "string",
+              "name": "timestamp",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getAllPatients",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "aadhar",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "publicAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "string",
+                  "name": "phoneNumber",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct Storage.PatientInfo[]",
+              "name": "",
+              "type": "tuple[]"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getPendingAccessRequest",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "name",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct Storage.AdminInfo[]",
+              "name": "",
+              "type": "tuple[]"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "userAddress",
+              "type": "address"
+            }
+          ],
+          "name": "getRecordsAdmin",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "aadhar",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "timestamp",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct Storage.Record[]",
+              "name": "",
+              "type": "tuple[]"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "getRecordsUser",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "id",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "aadhar",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "timestamp",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct Storage.Record[]",
+              "name": "",
+              "type": "tuple[]"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "isRegisteredUser",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
         }
-    ];
-    var address = "0xfe39E9C62ba2de4730dB65aB67b10DcE40f96cF1";
+      ]
+    var address = "0xB3201FA019ccd548aa49DD28ff2Ee98728707EB5";
     const { ethereum } = window;
     // console.log(window.ethereum);
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(address, abi, signer);
-    contract.pushRecord(Id,BloodPressure,Aadhar);
-
+    let d;
+    await contract.requestAccess("0x24ED65507c66f953601956619Df5edA46d3e9A5f").then(function (data){
+      d = data[0];
+      console.log(d);
+    });
+    // var modifiedFileList=d.map((fileHash)=>fileHash);
+    // console.log(modifiedFileList);
     }
 
       useEffect(()=>{
@@ -230,7 +368,7 @@ function NewEntry() {
                 window.ethereum
                   .request({ method: "eth_requestAccounts" })
                   .then((result) => {
-                    console.log("Wallet Connected");
+                    alert("Wallet Connected");
                   })
                   .catch((error) => {
                     console.log(error);
@@ -239,215 +377,6 @@ function NewEntry() {
                 console.log("Need to install MetaMask");
             }
             
-            var abi =[
-                {
-                    "inputs": [
-                        {
-                            "internalType": "uint256",
-                            "name": "Temp",
-                            "type": "uint256"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "_addhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "time",
-                            "type": "uint256"
-                        }
-                    ],
-                    "name": "pushRecord",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "doctorAddress",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "removeAccess",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "addressToAdmin",
-                    "outputs": [
-                        {
-                            "internalType": "string",
-                            "name": "name",
-                            "type": "string"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "addressToPatient",
-                    "outputs": [
-                        {
-                            "internalType": "string",
-                            "name": "aadhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "name",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "address",
-                            "name": "publicAddress",
-                            "type": "address"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "phoneNumber",
-                            "type": "string"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "",
-                            "type": "address"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "",
-                            "type": "uint256"
-                        }
-                    ],
-                    "name": "addressToRecord",
-                    "outputs": [
-                        {
-                            "internalType": "uint256",
-                            "name": "id",
-                            "type": "uint256"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "aadhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "timestamp",
-                            "type": "uint256"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "userAddress",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "getDetailsAdmin",
-                    "outputs": [
-                        {
-                            "components": [
-                                {
-                                    "internalType": "uint256",
-                                    "name": "id",
-                                    "type": "uint256"
-                                },
-                                {
-                                    "internalType": "string",
-                                    "name": "aadhar",
-                                    "type": "string"
-                                },
-                                {
-                                    "internalType": "uint256",
-                                    "name": "timestamp",
-                                    "type": "uint256"
-                                }
-                            ],
-                            "internalType": "struct Storage.Record[]",
-                            "name": "",
-                            "type": "tuple[]"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "userAddress",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "getDetailsUser",
-                    "outputs": [
-                        {
-                            "components": [
-                                {
-                                    "internalType": "uint256",
-                                    "name": "id",
-                                    "type": "uint256"
-                                },
-                                {
-                                    "internalType": "string",
-                                    "name": "aadhar",
-                                    "type": "string"
-                                },
-                                {
-                                    "internalType": "uint256",
-                                    "name": "timestamp",
-                                    "type": "uint256"
-                                }
-                            ],
-                            "internalType": "struct Storage.Record[]",
-                            "name": "",
-                            "type": "tuple[]"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                }
-            ];
-            var address = "0x40626603CBE99e98Ef7D64B0960A30d3966fCA8a";
-            const { ethereum } = window;
-            // console.log(window.ethereum);
-            const provider = new ethers.providers.Web3Provider(ethereum);
-            const signer = await provider.getSigner();
-            const contract = new ethers.Contract(address, abi, signer);
-            // console.log(contract);
-            // console.log(signer);
-            await contract.getDetailsUser(await signer.getAddress()).then(function(value){
-              console.log(value);
-
-            })
           }
         initWeb3();
       },[])
