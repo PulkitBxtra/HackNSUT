@@ -4,6 +4,7 @@ import {  useEffect } from "react";
 import { ethers } from "ethers";
 import { useState } from 'react';
 import Card from './Card';
+import keys from '../../../key';
 
 function ViewEntry() {
 
@@ -26,204 +27,8 @@ function ViewEntry() {
                 console.log("Need to install MetaMask");
             }
             
-            var abi =[
-                {
-                    "inputs": [
-                        {
-                            "internalType": "string",
-                            "name": "id",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "_addhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "time",
-                            "type": "string"
-                        }
-                    ],
-                    "name": "pushRecord",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "doctorAddress",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "removeAccess",
-                    "outputs": [],
-                    "stateMutability": "nonpayable",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "addressToAdmin",
-                    "outputs": [
-                        {
-                            "internalType": "string",
-                            "name": "name",
-                            "type": "string"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "addressToPatient",
-                    "outputs": [
-                        {
-                            "internalType": "string",
-                            "name": "aadhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "name",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "address",
-                            "name": "publicAddress",
-                            "type": "address"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "phoneNumber",
-                            "type": "string"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "",
-                            "type": "address"
-                        },
-                        {
-                            "internalType": "uint256",
-                            "name": "",
-                            "type": "uint256"
-                        }
-                    ],
-                    "name": "addressToRecord",
-                    "outputs": [
-                        {
-                            "internalType": "string",
-                            "name": "id",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "aadhar",
-                            "type": "string"
-                        },
-                        {
-                            "internalType": "string",
-                            "name": "timestamp",
-                            "type": "string"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "userAddress",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "getDetailsAdmin",
-                    "outputs": [
-                        {
-                            "components": [
-                                {
-                                    "internalType": "string",
-                                    "name": "id",
-                                    "type": "string"
-                                },
-                                {
-                                    "internalType": "string",
-                                    "name": "aadhar",
-                                    "type": "string"
-                                },
-                                {
-                                    "internalType": "string",
-                                    "name": "timestamp",
-                                    "type": "string"
-                                }
-                            ],
-                            "internalType": "struct Storage.Record[]",
-                            "name": "",
-                            "type": "tuple[]"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                },
-                {
-                    "inputs": [
-                        {
-                            "internalType": "address",
-                            "name": "userAddress",
-                            "type": "address"
-                        }
-                    ],
-                    "name": "getDetailsUser",
-                    "outputs": [
-                        {
-                            "components": [
-                                {
-                                    "internalType": "string",
-                                    "name": "id",
-                                    "type": "string"
-                                },
-                                {
-                                    "internalType": "string",
-                                    "name": "aadhar",
-                                    "type": "string"
-                                },
-                                {
-                                    "internalType": "string",
-                                    "name": "timestamp",
-                                    "type": "string"
-                                }
-                            ],
-                            "internalType": "struct Storage.Record[]",
-                            "name": "",
-                            "type": "tuple[]"
-                        }
-                    ],
-                    "stateMutability": "view",
-                    "type": "function"
-                }
-            ];
-            var address = "0xAe4F1430761A1543b7015d4801534C4C489A96B8";
+            var abi  = keys[0];
+            var address = keys[1];
             const { ethereum } = window;
             // console.log(window.ethereum);
             const provider = new ethers.providers.Web3Provider(ethereum);
@@ -231,8 +36,8 @@ function ViewEntry() {
             const contract = new ethers.Contract(address, abi, signer);
             // console.log(contract);
             // console.log(signer);
-            await contract.getDetailsUser(await signer.getAddress()).then(function(value){
-              console.log(value[0]);
+            await contract.getAllPatients().then(function(value){
+              console.log(value);
             //   SetVal(Val);
             let list = [];
               const valmap= value.map(x =>{

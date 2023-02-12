@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import {Navigate, useNavigate} from 'react-router-dom';
+import keys from '../../../key';
+import { ethers } from "ethers";
 
 function Navbar() {
   const [account,setAccount] = useState(null);
@@ -12,9 +14,24 @@ function Navbar() {
   const handleClick = () =>{
     window.ethereum
     .request({ method: "eth_requestAccounts" })
-    .then((result) => {
+    .then(async (result) => {
       setAccount(result[0]);
-      Navigate('/dashboard/admin');
+      // var abi = keys[0];
+      // var address = keys[1];
+      // const { ethereum } = window;
+      // const provider = new ethers.providers.Web3Provider(ethereum);
+      // const signer = await provider.getSigner();
+      // const contract = await new ethers.Contract(address, abi, signer);
+      // await contract.isRegisteredUser().call().then(function (data){
+      //   console.log(data);
+      //   if (data[0]==='n'){
+      //     alert("Make an account.");
+      //   }
+      //   else{
+      //     Navigate('/dashboard/admin');
+      //   }
+      // })
+      
       
       console.log(Login);
       console.log("Wallet Connected");

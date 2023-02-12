@@ -4,6 +4,22 @@ import { useState } from 'react';
 function Card(props) {
     console.log(props);
     const [open, setOpen] = useState(true);
+    const [randomData,setRandomData] = useState("");
+
+    function foo(){
+     let x =  Math.floor((Math.random() * 10) + 1);
+     let  name = ["Rishabh","Pulkit","Vinay","Mini","Ram","Shyam","Ghanshyam","Sujata","Keshav","Sakshi"][x];
+     let age = Math.floor((Math.random() * 100) + 1);
+     let bloodGroup = ["A+","A-","B+","B-","AB+","AB-","O+","O-"][Math.floor((Math.random() * 8))]
+     let aadhar_number =  Math.floor((Math.random() * 1000000000000) + 1);
+     var obj = {
+      name,
+      age,
+      bloodGroup,
+      aadhar_number,
+     }
+     setRandomData(obj);
+    }
 
   return (
     <div>
@@ -17,7 +33,7 @@ function Card(props) {
         <br />
         Time:{}
       </h1>
-      <button  onClick={() => setOpen(!open)} class="flex-shrink-0 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mt-10 sm:mt-0">View</button>
+      <button  onClick={() => {setOpen(!open);foo()}} class="flex-shrink-0 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg mt-10 sm:mt-0">View</button>
     </div>
     {/* <hr class="divide-emerald-500"/> */}
   </div>
@@ -25,7 +41,8 @@ function Card(props) {
     <div class={open ? "hidden": "flex w-2/3 items-center mx-auto bg-gray-100 rounded"}>
     {/* <div onClick={() => setOpen(!open)} class="display-hidden"> */}
         <p>
-	"random": "52",
+          {JSON.stringify(randomData)}
+	{/* "random": "52",
 	"random float": "41.74",
 	"bool": "false",
 	"date": "1991-08-27",
@@ -43,7 +60,7 @@ function Card(props) {
 		"Hope",
 		"Doralynne",
 		"Neila",
-		"Corly"
+		"Corly" */}
 	],
     </p>
     </div>
