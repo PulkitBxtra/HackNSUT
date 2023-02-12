@@ -317,6 +317,6 @@ const abi = [
 		"type": "function"
 	}
 ]
-const addr = "0xC2C9C30721D0CEc2D8D32A2Ea44a171278b898B0";
+const addr = "0xf8C8c0f5ae382F23b439eB4B1f1a429593cc78D7";
 const key = [abi,addr];
 export default key;

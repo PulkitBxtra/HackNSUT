@@ -58,7 +58,7 @@ function Navbar() {
     <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
       <a class="mr-5 hover:text-gray-900 cursor-pointer" href='/'>Home</a>
       <a class="mr-5 hover:text-gray-900 cursor-pointer" href="/about" >About us</a>
-      <a class="mr-5 hover:text-gray-900 cursor-pointer">Third Link</a>
+      {/* <a class="mr-5 hover:text-gray-900 cursor-pointer">Third Link</a> */}
       <a class="mr-5 hover:text-gray-900 cursor-pointer" href="/experiences">Experiences</a>
     </nav>
 
