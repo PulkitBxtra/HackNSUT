@@ -13,8 +13,9 @@ function Hero() {
       </h1>
       <p class="mb-8 leading-relaxed">We are the ultimate platform for managing and tracking your personal health information. With Health Ledger, you can store, organize and access all of your health data in one secure and easy-to-use platform.</p>
       <div class="flex justify-center">
-        <button class="inline-flex text-white bg-emerald-500 border-0 py-2 px-6 focus:outline-none hover:bg-emerald-600 rounded text-lg">Join Now</button>
-        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Experiences</button>
+        <button class="inline-flex text-white bg-emerald-500 border-0 py-2 px-6 focus:outline-none hover:bg-emerald-600 rounded text-lg">
+        <a href="/dashboard/user"> Join Now </a></button>
+        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"><a href="/experiences"> Experiences </a></button>
       </div>
     </div>
     <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
@@ -36,7 +37,7 @@ function Hero() {
               <div class="flex flex-wrap -m-4 text-center">
                 <div class="p-4 sm:w-1/4 w-1/2">
                   <h2 class="title-font font-medium sm:text-5xl text-3xl text-white mb-1">
-                    2022
+                    2023
                   </h2>
                   <p class="leading-relaxed">Year Established</p>
                 </div>
@@ -44,19 +45,19 @@ function Hero() {
                   <h2 class="title-font font-medium sm:text-5xl text-3xl text-white mb-1">
                     50+
                   </h2>
-                  <p class="leading-relaxed">Active Members</p>
+                  <p class="leading-relaxed">Transactions per second</p>
                 </div>
                 <div class="p-4 sm:w-1/4 w-1/2">
                   <h2 class="title-font font-medium sm:text-5xl text-3xl text-white mb-1">
-                    5+
+                    4
                   </h2>
-                  <p class="leading-relaxed">Our Events</p>
+                  <p class="leading-relaxed">Our Members</p>
                 </div>
                 <div class="p-4 sm:w-1/4 w-1/2">
                   <h2 class="title-font font-medium sm:text-5xl text-3xl text-white mb-1">
-                    2
+                    9000+
                   </h2>
-                  <p class="leading-relaxed">Our Teams (Team Falcon and Ampere)</p>
+                  <p class="leading-relaxed">Lines of code</p>
                 </div>
               </div>
             </div>
