@@ -80,9 +80,9 @@ function NewEntry() {
           "name": "pushRecord",
           "outputs": [
             {
-              "internalType": "bool",
+              "internalType": "string",
               "name": "",
-              "type": "bool"
+              "type": "string"
             }
           ],
           "stateMutability": "nonpayable",
@@ -91,9 +91,9 @@ function NewEntry() {
         {
           "inputs": [
             {
-              "internalType": "address",
-              "name": "userAddress",
-              "type": "address"
+              "internalType": "string",
+              "name": "adhar",
+              "type": "string"
             }
           ],
           "name": "requestAccess",
@@ -122,6 +122,11 @@ function NewEntry() {
                   "internalType": "string",
                   "name": "name",
                   "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "publicAddress",
+                  "type": "address"
                 }
               ],
               "internalType": "struct Storage.AdminInfo",
@@ -213,6 +218,25 @@ function NewEntry() {
           "type": "function"
         },
         {
+          "inputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "name": "adharToAddress",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
           "inputs": [],
           "name": "getAllPatients",
           "outputs": [
@@ -257,6 +281,11 @@ function NewEntry() {
                   "internalType": "string",
                   "name": "name",
                   "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "publicAddress",
+                  "type": "address"
                 }
               ],
               "internalType": "struct Storage.AdminInfo[]",
@@ -347,20 +376,29 @@ function NewEntry() {
           "type": "function"
         }
       ]
-    var address = "0xB3201FA019ccd548aa49DD28ff2Ee98728707EB5";
+    var address = "0x19013F88d263FD26C6a287c16bCa0E30C9aE3A51";
     const { ethereum } = window;
     // console.log(window.ethereum);
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(address, abi, signer);
     let d;
-    await contract.requestAccess("0x24ED65507c66f953601956619Df5edA46d3e9A5f").then(function (data){
-      d = data[0];
-      console.log(d);
-    });
+    // await contract.pushRecord("0x24ED65507c66f953601956619Df5edA46d3e9A5f", "he", "h", "sjh").then(function (data){
+    //   d = data;
+    //   console.log(d);
+    // });
+    // await contract.("0x24ED65507c66f953601956619Df5edA46d3e9A5f", "he", "h", "sjh").then(function (data){
+    //   d = data;
+    //   console.log(d);
+    // });
+    // await contract.getRecordsAdmin("0x24ED65507c66f953601956619Df5edA46d3e9A5f").then(function (data){
+    //   d = data;
+    //   console.log(d);
+    // });
     // var modifiedFileList=d.map((fileHash)=>fileHash);
     // console.log(modifiedFileList);
     }
+    //getPendingAccessRequest -> acces ind 1;
 
       useEffect(()=>{
         async function initWeb3() {
